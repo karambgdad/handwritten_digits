@@ -1,5 +1,8 @@
 # Derive the network before memorizing the code
 
+Start with [the tiny network walkthrough](02_tiny_network_walkthrough.md) if
+you want to trace actual numbers before working with the general formulas.
+
 Read `cbem/network.py` alongside this document. B = batch size, D = input
 features, H = hidden neurons, C = classes. Our examples occupy rows.
 

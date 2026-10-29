@@ -19,6 +19,7 @@ py -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements.txt
 .venv\Scripts\python.exe lessons/00_python_and_arrays.py
 .venv\Scripts\python.exe lessons/01_one_neuron.py
+.venv\Scripts\python.exe lessons/02_tiny_network.py
 .venv\Scripts\python.exe train.py
 .venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
@@ -30,6 +31,7 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python lessons/00_python_and_arrays.py
 .venv/bin/python lessons/01_one_neuron.py
+.venv/bin/python lessons/02_tiny_network.py
 .venv/bin/python train.py
 .venv/bin/python -m unittest discover -s tests -v
 ```
@@ -44,9 +46,10 @@ the environment. No GPU or dataset download is required to run the examples.
 | --- | --- | --- |
 | 0 | [Python and arrays](lessons/00_python_and_arrays.py) | Variables, functions, indexing, shapes, `@`, and broadcasting |
 | 1 | [Foundations](docs/01_foundations.md) and [one neuron](lessons/01_one_neuron.py) | Features, targets, weights, biases, loss, derivatives, and learning rate |
-| 2 | [Backpropagation](docs/02_backpropagation.md) and [network code](cbem/network.py) | Every matrix shape and how the chain rule produces each gradient |
-| 3 | [Experiments](docs/03_experiments.md) and [training code](train.py) | Generalization, data splits, baselines, overfitting, and error analysis |
-| 4 | [Next steps](docs/04_next_steps.md) | A progression toward linear classifiers, PyTorch, and convolutional networks |
+| 2 | [Tiny network walkthrough](docs/02_tiny_network_walkthrough.md) and [matching code](lessons/02_tiny_network.py) | One complete prediction, all 12 gradients, and one update with actual numbers |
+| 3 | [Backpropagation](docs/02_backpropagation.md) and [network code](cbem/network.py) | Every matrix shape and how the chain rule produces each gradient |
+| 4 | [Experiments](docs/03_experiments.md) and [training code](train.py) | Generalization, data splits, baselines, overfitting, and error analysis |
+| 5 | [Next steps](docs/04_next_steps.md) | A progression toward linear classifiers, PyTorch, and convolutional networks |
 
 Before changing a setting, write a prediction. Run the experiment, inspect its
 curves and mistakes, then explain whether the evidence supports your prediction.
