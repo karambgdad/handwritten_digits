@@ -1,0 +1,46 @@
+name: Python checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  network:
+    name: Network tests and training (Python ${{ matrix.python }})
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12']
+    env:
+      MPLBACKEND: Agg
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Record dependency versions
+        run: python -m pip freeze
+      - name: Check gradients, learning, data and worked examples
+        run: python -m unittest discover -s tests -v
+      - name: Train and save a model
+        run: python train.py --epochs 100 --hidden 32 --learning-rate 0.1 --seed 42 --out runs/ci
+      - name: Load the saved model and predict
+        run: python predict.py --model runs/ci/model.npz --data mnist_train_100.csv --index 0
+      - name: Save training evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: training-python-${{ matrix.python }}
+          path: runs/ci/
+          if-no-files-found: error
+          retention-days: 14

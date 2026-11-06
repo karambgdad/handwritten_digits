@@ -1,5 +1,7 @@
 # Machine Learning from Zero
 
+[![Python checks](https://github.com/karambgdad/handwritten_digits/actions/workflows/python.yml/badge.svg)](https://github.com/karambgdad/handwritten_digits/actions/workflows/python.yml)
+
 A small Python learning project that grows from one adjustable number to a
 handwritten-digit classifier. The aim is to understand what the calculations
 mean, derive the gradients, and test explanations through experiments.
@@ -9,6 +11,13 @@ written explicitly. Matplotlib draws the results. No deep-learning framework
 is needed for this first stage.
 
 ## Start here
+
+GitHub Actions runs the nine mathematical/data/lesson tests on Python 3.11 and 3.12,
+trains a model for 100 epochs with seed 42, and loads that model for prediction.
+Each run records installed dependency versions and keeps its plots, model and
+training summary as downloadable artifacts for 14 days. CI uses the small training
+CSV and its validation split; it does not use the held-out test set for tuning or
+assert a target accuracy. The workflow is [here](.github/workflows/python.yml).
 
 Use Python 3.11 or newer. Run commands from this repository's root directory.
 
